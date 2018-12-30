@@ -1,0 +1,158 @@
+<template>
+  <el-aside width="230px">
+    <el-menu
+      :default-active="$route.path"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      text-color="#fff"
+      active-text-color="#ffd04b"
+      :unique-opened="isOpened"
+    >
+      <div class="_letfTop">
+        <p>华联超市管理系统</p>
+        <p>
+          你好，
+          <span>admin</span>
+        </p>
+        <p>
+          <router-link to="/">管理首页</router-link>
+          <a href></a>|
+          <router-link to="/userlist">退出系统</router-link>
+          <a href></a>
+        </p>
+      </div>
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-menu"></i>
+          <span>分类管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/classList">
+            <router-link to="/classList">分类管理</router-link>
+          </el-menu-item>
+          <el-menu-item index="/classAdd">
+            <router-link to="/classAdd">添加分类</router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="2">
+        <template slot="title">
+          <i class="el-icon-goods"></i>
+          <span>商品管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/shopList">
+            <router-link to="/shopList">商品管理</router-link>
+          </el-menu-item>
+          <el-menu-item index="/shopadd">
+            <router-link to="/shopadd">添加商品</router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="3">
+        <template slot="title">
+          <i class="el-icon-sold-out"></i>
+          <span>进货管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="3-1">库存管理</el-menu-item>
+          <el-menu-item index="3-2">添加库存</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="4">
+        <template slot="title">
+          <i class="el-icon-rank"></i>
+          <span>出货管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="4-1">销售列表</el-menu-item>
+          <el-menu-item index="4-2">商品出库</el-menu-item>
+          <el-menu-item index="4-3">商品退货</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="5">
+        <template slot="title">
+          <i class="el-icon-edit-outline"></i>
+          <span>统计管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="5-1">销售统计</el-menu-item>
+          <el-menu-item index="5-2">进货统计</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="6">
+        <template slot="title">
+          <i class="el-icon-star-off"></i>
+          <span>账号管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/userlist">
+            <router-link to="/userlist">账号管理</router-link>
+          </el-menu-item>
+          <el-menu-item index="/useradd">
+            <router-link to="/useradd">添加账号</router-link>
+          </el-menu-item>
+          <el-menu-item index="/pwdedit">
+            <router-link to="/pwdedit">修改密码</router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="7">
+        <template slot="title">
+          <i class="el-icon-star-on"></i>
+          <span>会员管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/viplist">
+            <router-link to="/viplist">账号管理</router-link>
+          </el-menu-item>
+          <el-menu-item index="/vipadd">
+            <router-link to="/vipadd">添加账号</router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="8">
+        <template slot="title">
+          <i class="el-icon-setting"></i>
+          <span>系统管理</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="/">
+            <router-link to="/">系统信息</router-link>
+          </el-menu-item>
+          <el-menu-item index="8-2">
+            <router-link to="/">系统配置</router-link>
+          </el-menu-item>
+          <el-menu-item index="8-3">
+            <router-link to="/">权限管理</router-link>
+          </el-menu-item>
+          <el-menu-item index="8-5">
+            <router-link to="/">添加管理组</router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+    </el-menu>
+  </el-aside>
+</template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      isOpened: true
+    };
+  },
+  methods: {
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    addRow() {}
+  }
+};
+</script>
+

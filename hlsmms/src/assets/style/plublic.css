@@ -1,0 +1,312 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: rgb(242, 248, 248) ;
+}
+
+html,body,#app,#loginbox,#outBox {
+    height: 100%;
+    margin: 0;
+}
+
+.el-header{
+  color: #333;
+  text-align: center;
+  height: 120px !important;
+  background:#f9f9f9;
+  width: 100%;
+}
+.el-main{
+    background:#f9f9f9;
+}
+.el-footer {
+    height: 50px !important;
+    background:#f9f9f9;
+    width: 100%;
+  }
+/* 左菜单全背景 */
+.el-aside {
+  background: url('../img/1_02.png') repeat-y;
+}
+/* 左菜单列表背景 */
+.el-menu {
+    border-right: none ;
+    background-color: transparent ;
+  
+}
+/* ul */
+.el-menu-vertical-demo{
+    margin-left: 30px;
+}
+body > .el-container {
+  margin-bottom: 40px;
+}
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+  line-height: 260px;
+}
+.el-container:nth-child(7) .el-aside {
+  line-height: 320px;
+}
+/* 上面 */
+._letfTop {
+  height: 110px;
+  margin-bottom: 24px;
+}
+._letfTop p:nth-of-type(1) {
+  line-height: 60px;
+  color: #fff;
+  font-size: 22px;
+}
+._letfTop p:nth-of-type(2) {
+  color: #d1cdcd;
+  font-size: 12px;
+  text-align: right;
+  padding-right: 10px;
+  height: 30px;
+  line-height: 30px;
+}
+._letfTop p:nth-of-type(2) span {
+  color: #fff;
+  font-size: 12px;
+}
+._letfTop p:nth-of-type(3) a,
+._letfTop p:nth-of-type(3) {
+  line-height: 30px;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.5s ease-in-out;
+  text-align: right;
+    padding-right: 5px;
+}
+._letfTop p:nth-of-type(3) a:hover {
+  color: rgb(34, 247, 51);
+}
+.el-aside {
+  background-color: #d3dce6;
+  color: #333;
+  text-align: center;
+  line-height: 2px;
+}
+/* 主菜单 */
+.el-submenu__title {
+    height: 30px ;
+    line-height: 30px ;
+    background: url("../img/menubg_06.png") repeat-x ;
+    border-radius:30px 0 0 30px;
+    margin: 0 0 10px 0;
+    text-align: right;
+}
+.el-submenu__title:hover , .is-opened>div{
+    background: #e5e6e4 ;
+    color: rgb(20, 20, 20) !important;
+}
+.el-submenu__title i {
+    color: #ffffff ;
+}
+.el-icon-arrow-down:before {
+    content: "";
+}
+/* 子菜单 */
+.el-menu-item{
+    padding: 0  !important;
+    text-align: right;
+}
+.el-menu-item-group__title{
+    padding: 0;
+}
+.el-submenu .el-menu-item {
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 0;
+}
+.el-menu-item:hover, .el-menu-item:focus {
+    outline: none;
+    background-color: transparent ;
+}
+.el-menu-item a{
+    display: block;
+    text-decoration: none;
+    color: rgb(242, 248, 248) !important;
+    border-radius:30px 0 0 30px;
+    padding: 0 20px;
+}
+.el-menu-item a:hover{
+    background-color: #727571a6;
+}
+.el-menu-item.is-active a {
+    font-weight: bold;
+    font-size:14px ;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background-color: #727571a6;
+    margin: 10px 0;
+    border-radius:30px 0 0 30px;
+}
+.el-menu-item.is-active:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent rgb(255, 255, 255) transparent transparent;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    border-width: 6px;
+}
+/* 头部 */
+.el-header div{
+    text-align: left;
+}
+.el-header div p:nth-of-type(1){
+    font-size: 30px;
+    height: 36px;
+    padding:50px 0 0 0 ;
+    color: #000
+}
+.el-header div p:nth-of-type(2) a{
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+    text-decoration: none;
+    color: rgb(126, 126, 126);
+}
+.el-footer p{
+    font-size: 12px;
+    color: rgb(163, 163, 163);
+    border-top:1px solid #ccc ;
+    padding: 10px 0;
+}
+.el-table thead{
+    color: #000;
+  }
+  .el-card__header {
+    padding: 10px 20px !important;
+    background: linear-gradient(#fff, #e5e5e5);
+  }
+  .el-alert--info {
+    margin: 14px 0 !important;
+  }
+  .content{
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-start;
+   align-content: flex-start;
+   background:#f9f9f9;
+  }
+
+ .el-card__body {
+    padding:0;
+    position: relative
+} 
+
+.el-tabs__header {
+    top: -29px;
+    float: right;
+} 
+.el-tabs__item {
+    height: 30px;
+    line-height: 30px;
+    border-radius: 6px 6px 0 0;
+}
+
+.el-tabs--border-card > .el-tabs__header {
+    background-color:transparent;
+    padding-right: 100px;
+}
+#outBox .el-form-item__content {
+    width: 340px;
+}
+
+.el-tabs--border-card > .el-tabs__content {
+    padding: 10px 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+#tables .item{
+    position: relative;
+  }
+#tables .el-menu.el-menu--horizontal {
+    position:absolute;
+    top: -35px;
+    right: 20px;
+  }
+
+#tables .el-menu--horizontal > .el-menu-item {
+    height: 36px;
+    line-height:36px;
+    color: rgb(27, 27, 27) !important;
+    border-radius: 10px 10px 0 0;
+    margin: 0 10px
+}
+#tables .el-menu-item a {
+    color: rgb(27, 27, 27) !important;
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    background-color:transparent;
+    margin:0;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+
+}
+
+#tables .el-menu-item a:hover {
+    background-color: #fff;
+    color: rgb(27, 27, 27);
+    border-radius: 10px 10px 0 0;
+}
+#tables  .el-menu--horizontal > .el-menu-item.is-active {
+    border-bottom: none;
+}
+#tables  .el-menu--horizontal > .el-menu-item.is-active:after {
+    display: none;
+}
+#tables .router-link-exact-active {
+
+    font-size: 14px;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    background-color: #fff !important;
+    margin:0;
+    border-radius: 10px 10px 0 0; 
+}
+#tables .el-menu.el-menu--horizontal,.el-tabs--border-card > .el-tabs__header {
+    border-bottom:none;
+}
+#tables  .el-form--label-top .el-form-item__label {
+    padding:0;
+}
+
+.h40{
+    line-height: 40px;
+    text-align: right
+}
+.h40r{
+    line-height: 40px;
+    text-align: left;
+    padding-left: 30px;
+}
+#xian .el-row{
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 15px;
+}
+.el-pagination {
+    margin: 20px 0px;
+}
+#shopinpt .el-input {
+    width: 240px;
+    margin-right: 6px;
+}
+.cff{
+    color: #ccc;
+    font-size: 12px;
+}
