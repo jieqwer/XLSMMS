@@ -5,6 +5,7 @@
 a{
     text-decoration: none;
     color: rgb(242, 248, 248) ;
+    cursor: pointer;
 }
 
 html,body,#app,#loginbox,#outBox {
@@ -200,7 +201,7 @@ body > .el-container {
   }
 
  .el-card__body {
-    padding:0;
+    padding:0 !important;
     position: relative
 } 
 

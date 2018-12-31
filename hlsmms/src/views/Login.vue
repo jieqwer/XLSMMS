@@ -141,7 +141,7 @@ export default {
   z-index: 5;
 }
 
-.el-card__body {
+#login .el-card__body {
   padding: 20px !important;
 }
 .el-form-item__label {

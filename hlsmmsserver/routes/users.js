@@ -174,7 +174,6 @@ router.post("/login", (req, res) => {
                 res.cookie("userid", result[0].userid);
                 res.cookie("username", username);
                 console.log(req.cookies)
-
                 res.json({ "isOk": true, "code": 1, "msg": "登录成功！" });
             }
             else {
@@ -185,15 +184,16 @@ router.post("/login", (req, res) => {
 
 });
 //查询cookie
-// router.get("/getCookie", (req, res) => {
-//     let userid = req.cookie.userid;
-//     let username = req.cookie.username;
-//     if (userid && username) {
-//         res.send({ "isOk": true, "code": 1 })
-//     } else {
-//         res.send({ "isOk": false, "code": 0 })
-//     }
-// })
+router.get("/getCookie", (req, res) => {
+    let userid = req.cookies.userid;
+    let username = req.cookies.username;
+    if (userid && username) {
+        res.send({ "isOk": true, "code": 1 })
+    } else {
+        res.send({ "isOk": false, "code": 0 })
+    }
+})
+//清除cookie
 router.get("/loginOut",(req,res)=>{
     res.clearCookie("userid");
     res.clearCookie("username");
