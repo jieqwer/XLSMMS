@@ -1,40 +1,43 @@
 <template>
-  <el-container class="_box">
+  <el-container id="outBox">
     <!-- 左侧 -->
     <LeftMenu></LeftMenu>
-    <!--  右侧 -->
-    <el-container class="content"> 
-      <!--  右上 -->
+    <!-- 右侧 -->
+    <el-container class="content">
+      <!-- 顶部 -->
       <RightTop></RightTop>
-      <!-- 内容 -->
+      <!-- 中间 -->
       <el-main>
-        <el-card class="box-card">
+        <el-card class="box-card" id="tables">
           <div slot="header" class="clearfix">
-            <h3>密码修改</h3>
+            <h3>进货数据统计</h3>
           </div>
           <div class="text item">
-        
+            <el-tabs type="border-card">
+              <div style="height:300px;"></div>
+              <!-- 内容 -->
+            </el-tabs>
           </div>
         </el-card>
       </el-main>
-      <!-- 版权 -->
+      <!-- 底部 -->
       <RightBottom></RightBottom>
     </el-container>
   </el-container>
 </template>
 
 <script>
+//引入导航组件
 import LeftMenu from "../components/leftMenu.vue";
 import RightTop from "../components/rightTop.vue";
 import RightBottom from "../components/rightBottom.vue";
+
 export default {
-  name: "home",
   data() {
-    return {
-  
-    };
+    return {};
   },
   components: {
+    //注册组件
     LeftMenu,
     RightTop,
     RightBottom
@@ -42,6 +45,20 @@ export default {
 };
 </script>
 
-<style>
 
+<style>
+/* scoped 作用域限定样式只在当前组件生效 */
 </style>
+
+
+
+
+
+
+
+
+
+
+
+
+

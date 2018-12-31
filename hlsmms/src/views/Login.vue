@@ -71,6 +71,7 @@ export default {
       this.$refs[formName].validate(valid => {
         //valid参数表示验证的结果，true表示验证通过，false验证失败
         if (valid) {
+          this.axios.defaults.withCredentials = true;
           this.axios
             .post(
               "http://127.0.0.1:888/users/login",
@@ -92,7 +93,7 @@ export default {
               }
             })
             .catch(error => {
-              console.error("服务器错误返回的信息", error);
+              this.$message.error("服务器错误:" + error.message);
             });
         } else {
           alert("× 信息不完整，登录失败!");

@@ -51,10 +51,37 @@ export default new Router({
       path: '/shopList',
       component: () => import('./views/shopList')
     },
-    ,
     {
       path: '/shopadd',
       component: () => import('./views/shopadd')
+    },
+    {
+      path: '/inventoryadd',
+      component: () => import('./views/inventoryAdd')
+    },
+    {
+      path: '/inventorylist',
+      component: () => import('./views/inventorylist')
+    },
+    {
+      path: '/statisticsx',
+      component: () => import('./views/statisticsx')
+    },
+    {
+      path: '/statisticsj',
+      component: () => import('./views/statisticsj')
+    },
+    {
+      path: '/shipback',
+      component: () => import('./views/shipback')
+    },
+    {
+      path: '/shipout',
+      component: () => import('./views/shipout')
+    },
+    {
+      path: '/shiplist',
+      component: () => import('./views/shiplist')
     }
   ]
 })

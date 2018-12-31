@@ -294,6 +294,7 @@ body > .el-container {
     line-height: 40px;
     text-align: left;
     padding-left: 30px;
+    font-size: 14px;
 }
 #xian .el-row{
     border-bottom: 2px solid #ccc;
@@ -309,4 +310,25 @@ body > .el-container {
 .cff{
     color: #ccc;
     font-size: 12px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.ml10{
+    margin-left: 10px;
+}
+#outinpt .el-input{
+    margin-right: 6px;
+     width: 200px !important;
+}
+.cred{
+    color: red;
+}
+.font14{
+    font-size:14px;
+    padding: 10px 0;
+    border-bottom:1px solid #ccc; 
+}
+.p20{
+    padding: 20px;
 }

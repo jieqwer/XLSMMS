@@ -10,23 +10,21 @@
       <el-main>
         <el-card class="box-card" id="tables">
           <div slot="header" class="clearfix">
-            <h3>商品列表</h3>
+            <h3>销售明细</h3>
           </div>
           <div class="text item" id="xian">
             <!-- 账号管理组件 -->
-            <Shoptemplet></Shoptemplet>
+            <Shipmenttemplet></Shipmenttemplet>
             <!-- 账号管理下方内容 -->
             <el-tabs type="border-card">
               <el-row>
-                <el-col :span="3">
-                  <el-select v-model="value" placeholder="------------选择分类----------">
-                    <el-option
-                      v-for="item in options"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    ></el-option>
-                  </el-select>
+                <el-col :sapn="24">
+                  <div class="block mb10">
+                    <span class="demonstration">开始时间 ：</span>
+                    <el-date-picker v-model="value1" type="date" placeholder="选择日期"></el-date-picker>
+                    <span class="demonstration ml10">结束时间：</span>
+                    <el-date-picker  v-model="value1" type="date" placeholder="选择日期"></el-date-picker>
+                  </div>
                 </el-col>
                 <el-col :span="1">
                   <div class="h40">关键字：</div>
@@ -34,58 +32,49 @@
                 <el-col :span="4">
                   <el-input placeholder="请输入内容" v-model="input10" clearable></el-input>
                 </el-col>
-                <el-col :span="3">
-                  <div class="h40r">（商品名称，条形码）</div>
+                <el-col :span="5">
+                  <div class="h40r">（商品名称,订单号，用户名称，会员卡号）</div>
                 </el-col>
-                <el-button type="success" >查询</el-button>
+                <el-button type="success">查询</el-button>
               </el-row>
 
               <el-table :data="tableData" stripe style="width: 100%">
-                <el-table-column label="商品条形码">
+                <el-table-column label="订单号">
                   <template slot-scope="scope">
-                    <span>{{ scope.row.bar }}</span>
+                    <span>{{ scope.row.orderid }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="商品名称">
+                <el-table-column label="名称">
                   <template slot-scope="scope">
                     <span>{{ scope.row.shopname }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="所属分类">
+                <el-table-column label="数量">
                   <template slot-scope="scope">
-                    <span>{{ scope.row.shopclass }}</span>
+                    <span>{{ scope.row.shopnum }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="售价（元）">
+                <el-table-column label="实际售价售价（元）">
                   <template slot-scope="scope">
                     <span>{{ scope.row.sellprice }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="促销价（元）">
+                <el-table-column label="优惠（促销/会员）">
                   <template slot-scope="scope">
                     <span>{{ scope.row.salesprice }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="市场价（元）">
+                <el-table-column label="退款">
                   <template slot-scope="scope">
                     <span>{{ scope.row.bazaarprice }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="库存">
+                <el-table-column label="销售时间">
                   <template slot-scope="scope">
-                    <span>{{ scope.row.inventory }}</span>
+                    <span>{{ scope.row.datatime }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="库存总额（元）">
-                  <template slot-scope="scope">
-                    <span>{{ scope.row.inventorall }}</span>
-                  </template>
-                </el-table-column>
-                <el-table-column label="销售总额（元）">
-                  <template slot-scope="scope">
-                    <span>{{ scope.row.marketall }}</span>
-                  </template>
-                </el-table-column>
+
                 <el-table-column label="管理">
                   <template slot-scope="scope">
                     <el-button size="mini" @click="handleEdit(scope.$index, scope.row)">
@@ -127,7 +116,7 @@
 import LeftMenu from "../components/leftMenu.vue";
 import RightTop from "../components/rightTop.vue";
 import RightBottom from "../components/rightBottom.vue";
-import Shoptemplet from "../components/shoptemplet.vue";
+import Shipmenttemplet from "../components/shipmenttemplet.vue";
 
 export default {
   data() {
@@ -155,29 +144,27 @@ export default {
         }
       ],
       value: "",
+      value1: "",
+      value2: "",
       tableData: [
         {
-          bar: "12345678",
+          orderid: "12345678",
           shopname: "我的优乐美",
-          shopclass: "优乐美",
-          sellprice: "2.00",
-          salesprice: "未促销",
-          bazaarprice: "2.40",
-          inventory: "0（缺）",
-          inventorall: "0.00",
-          marketall: "0.00"
+          shopnum: "3",
+          sellprice: "6.00",
+          salesprice: "2.00元/无",
+          bazaarprice: "无退款",
+          datatime: "2018-12-31",
         },
         {
-          bar: "12345678",
-          shopname: "我的优乐美",
-          shopclass: "优乐美",
-          sellprice: "2.00",
-          salesprice: "未促销",
-          bazaarprice: "2.40",
-          inventory: "0（缺）",
-          inventorall: "0.00",
-          marketall: "0.00"
-        }
+          orderid: "23662135",
+          shopname: "你的优乐美",
+          shopnum: "4",
+          sellprice: "4.00",
+          salesprice: "1.00元/无",
+          bazaarprice: "无/无",
+          datatime: "2018-12-30",
+        },
       ],
       input10: "",
       currentPage4: 4
@@ -188,7 +175,7 @@ export default {
     LeftMenu,
     RightTop,
     RightBottom,
-    Shoptemplet
+    Shipmenttemplet
   },
   methods: {
     handleOpen(key, keyPath) {

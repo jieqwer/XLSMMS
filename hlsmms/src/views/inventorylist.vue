@@ -10,11 +10,11 @@
       <el-main>
         <el-card class="box-card" id="tables">
           <div slot="header" class="clearfix">
-            <h3>商品列表</h3>
+            <h3>库存管理</h3>
           </div>
           <div class="text item" id="xian">
             <!-- 账号管理组件 -->
-            <Shoptemplet></Shoptemplet>
+            <Inventorytemplet></Inventorytemplet>
             <!-- 账号管理下方内容 -->
             <el-tabs type="border-card">
               <el-row>
@@ -37,7 +37,7 @@
                 <el-col :span="3">
                   <div class="h40r">（商品名称，条形码）</div>
                 </el-col>
-                <el-button type="success" >查询</el-button>
+                <el-button type="success">查询</el-button>
               </el-row>
 
               <el-table :data="tableData" stripe style="width: 100%">
@@ -51,37 +51,22 @@
                     <span>{{ scope.row.shopname }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="所属分类">
-                  <template slot-scope="scope">
-                    <span>{{ scope.row.shopclass }}</span>
-                  </template>
-                </el-table-column>
-                <el-table-column label="售价（元）">
+                <el-table-column label="进价（元）">
                   <template slot-scope="scope">
                     <span>{{ scope.row.sellprice }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="促销价（元）">
-                  <template slot-scope="scope">
-                    <span>{{ scope.row.salesprice }}</span>
-                  </template>
-                </el-table-column>
-                <el-table-column label="市场价（元）">
-                  <template slot-scope="scope">
-                    <span>{{ scope.row.bazaarprice }}</span>
-                  </template>
-                </el-table-column>
-                <el-table-column label="库存">
+                <el-table-column label="入库">
                   <template slot-scope="scope">
                     <span>{{ scope.row.inventory }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="库存总额（元）">
+                <el-table-column label="库存">
                   <template slot-scope="scope">
                     <span>{{ scope.row.inventorall }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="销售总额（元）">
+                <el-table-column label="已售">
                   <template slot-scope="scope">
                     <span>{{ scope.row.marketall }}</span>
                   </template>
@@ -127,7 +112,7 @@
 import LeftMenu from "../components/leftMenu.vue";
 import RightTop from "../components/rightTop.vue";
 import RightBottom from "../components/rightBottom.vue";
-import Shoptemplet from "../components/shoptemplet.vue";
+import Inventorytemplet from "../components/inventorytemplet.vue";
 
 export default {
   data() {
@@ -159,24 +144,18 @@ export default {
         {
           bar: "12345678",
           shopname: "我的优乐美",
-          shopclass: "优乐美",
           sellprice: "2.00",
-          salesprice: "未促销",
-          bazaarprice: "2.40",
           inventory: "0（缺）",
-          inventorall: "0.00",
-          marketall: "0.00"
+          inventorall: "10",
+          marketall: "20"
         },
         {
-          bar: "12345678",
-          shopname: "我的优乐美",
-          shopclass: "优乐美",
-          sellprice: "2.00",
-          salesprice: "未促销",
-          bazaarprice: "2.40",
-          inventory: "0（缺）",
-          inventorall: "0.00",
-          marketall: "0.00"
+          bar: "82655678",
+          shopname: "我的优乐美1",
+          sellprice: "6.00",
+          inventory: "5）",
+          inventorall: "10",
+          marketall: "5"
         }
       ],
       input10: "",
@@ -188,7 +167,7 @@ export default {
     LeftMenu,
     RightTop,
     RightBottom,
-    Shoptemplet
+    Inventorytemplet
   },
   methods: {
     handleOpen(key, keyPath) {

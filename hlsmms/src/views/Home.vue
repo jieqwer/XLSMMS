@@ -12,7 +12,7 @@
           <div slot="header" class="clearfix">
             <h3>系统信息</h3>
           </div>
-          <div class="text item">
+          <div class="text item p20">
             <el-alert title="商品总数：5 。已销售总金额：890.00 。库存商品总价：1235.82 。" type="info" show-icon></el-alert>
             <el-alert title="导入数据" type="info" show-icon></el-alert>
 

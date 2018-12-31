@@ -140,7 +140,7 @@ export default {
                   type: "success"
                 });
                 setTimeout(() => {
-                  this.$router.push("/UserList");
+                  this.$router.push("/userlist");
                 }, 100);
               } else {
                 //添加失败

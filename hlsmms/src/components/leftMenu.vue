@@ -16,10 +16,8 @@
           <span>admin</span>
         </p>
         <p>
-          <router-link to="/">管理首页</router-link>
-          <a href></a>|
-          <router-link to="/userlist">退出系统</router-link>
-          <a href></a>
+          <router-link to="/">管理首页</router-link>|
+          <a @click="loginOut()">退出系统</a>
         </p>
       </div>
       <el-submenu index="1">
@@ -56,8 +54,12 @@
           <span>进货管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="3-1">库存管理</el-menu-item>
-          <el-menu-item index="3-2">添加库存</el-menu-item>
+          <el-menu-item index="/inventorylist">
+            <router-link to="/inventorylist">库存情况</router-link>
+          </el-menu-item>
+          <el-menu-item index="/inventoryadd">
+            <router-link to="/inventoryadd">添加库存</router-link>
+          </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="4">
@@ -66,9 +68,15 @@
           <span>出货管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="4-1">销售列表</el-menu-item>
-          <el-menu-item index="4-2">商品出库</el-menu-item>
-          <el-menu-item index="4-3">商品退货</el-menu-item>
+          <el-menu-item index="/shiplist">
+            <router-link to="/shiplist">销售列表</router-link>
+          </el-menu-item>
+          <el-menu-item index="/shipout">
+            <router-link to="/shipout">商品出库</router-link>
+          </el-menu-item>
+          <el-menu-item index="/shipback">
+            <router-link to="/shipback">商品退货</router-link>
+          </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="5">
@@ -77,8 +85,12 @@
           <span>统计管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="5-1">销售统计</el-menu-item>
-          <el-menu-item index="5-2">进货统计</el-menu-item>
+          <el-menu-item index="/statisticsx">
+            <router-link to="/statisticsx">销售统计</router-link>
+          </el-menu-item>
+          <el-menu-item index="/statisticsj">
+            <router-link to="/statisticsj">进货统计</router-link>
+          </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="6">
@@ -151,7 +163,25 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
-    addRow() {}
+    addRow() {},
+    loginOut() {
+      //发起ajax到后端路由去执行清除cookie的操作
+      this.axios
+        .get("http://127.0.0.1:888/users/loginOut")
+        .then(result => {
+          //根据是否清除成功处理业务逻辑
+          if (result.data.isOk) {
+            this.$message({
+              message: "退出成功！ 欢迎下次登录!",
+              type: "success"
+            });
+            this.$router.push("/login");
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   }
 };
 </script>
