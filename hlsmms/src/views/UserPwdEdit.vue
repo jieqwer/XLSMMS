@@ -111,9 +111,29 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          this.axios
+            .post(
+              "http://127.0.0.1:888/users/updatepwd",
+              this.qs.stringify(this[formName])
+            )
+            .then(result => {
+              if (result.data.isOk) {
+                //添加成功
+                this.$message({
+                  message: result.data.msg,
+                  type: "success"
+                });
+                this.$router.push("/login");
+              } else {
+                //添加失败
+                this.$message.error(result.data.msg);
+              }
+            })
+            .catch(error => {
+              console.error("服务器错误", error);
+            });
         } else {
-          console.log("error submit!!");
+          alert("× 您输入的信息有误!");
           return false;
         }
       });

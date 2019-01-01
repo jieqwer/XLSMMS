@@ -181,7 +181,6 @@ router.post("/login", (req, res) => {
             }
         }
     });
-
 });
 //查询cookie
 router.get("/getCookie", (req, res) => {
@@ -194,10 +193,48 @@ router.get("/getCookie", (req, res) => {
     }
 })
 //清除cookie
-router.get("/loginOut",(req,res)=>{
+router.get("/loginOut", (req, res) => {
     res.clearCookie("userid");
     res.clearCookie("username");
-    res.send({"isOk":true});
+    res.send({ "isOk": true });
 });
 
+router.post("/updatepwd", (req, res) => {
+    let { oldpass, pass} = req.body;
+    let userid = req.cookies.userid;
+    let sqlStr = `select * from userinfo where userid=${userid}`;
+    conn.query(sqlStr, (err, result) => {
+        //错误处理
+        if (err) {
+            throw err;
+        }
+        else {
+            //执行的结果
+            // console.log(result.length===1);
+            if (result.length > 0) {
+                if (result[0].userpwd !== oldpass) {
+                    res.json({ "isOk": false, "code": -1, "msg": "原密码错误，请你想一想" });
+                } else {
+                    let sqlStr1 = `update userinfo set userpwd='${pass}' where userid='${userid}'`;
+                    conn.query(sqlStr1, (err, result1) => {
+                        if (err) {
+                            throw err
+                        } else {
+                            if (result1.affectedRows > 0) {
+                                res.clearCookie("userid");
+                                res.clearCookie("username");
+                                res.send({ "isOk": true, "code": 1, "msg": "密码修改成功，请重新登录" })
+                            } else {
+                                res.send({ "isOk": false, "code": 0, "msg": "密码修改失败" })
+                            }
+                        }
+                    })
+                }
+            }
+            else {
+                res.json({ "isOk": false, "code": -1, "msg": "服务器错误，修改失败" });
+            }
+        }
+    });
+})
 module.exports = router;

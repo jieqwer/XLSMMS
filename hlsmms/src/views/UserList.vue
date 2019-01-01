@@ -204,6 +204,8 @@ export default {
         .get("http://127.0.0.1:888/users/getuserbyid?id=" + userid)
         .then(oldresult => {
           let oldresults = oldresult.data[0];
+          console.log(oldresult);
+          
           this.dialogVisible = true; //模态框显示
           this.ruleForm = oldresults; //复赋值表单数据
         })
