@@ -28,8 +28,12 @@
               >
                 <el-form-item label="所属分类：" prop="group">
                   <el-select v-model="ruleForm.group" placeholder="--顶级分类--">
-                    <el-option label="超级管理员" value="超级管理员"></el-option>
-                    <el-option label="普通管理员" value="普通管理员"></el-option>
+                    <el-option
+                      v-for="item in options"
+                      :key="item.tid"
+                      :label="item.tclassname"
+                      :value="item.tclassname"
+                    ></el-option>
                   </el-select>
                 </el-form-item>
                 <el-form-item label="分类名称：" prop="username">
@@ -73,11 +77,17 @@ export default {
         username: [
           { required: true, trigger: "blur", message: "分类名称必须填写" }
         ],
-        group: [{ required: true, trigger: "change", message: "请选择用户组" }],
+        group: [{ required: true, trigger: "change", message: "请选择父级分类" }],
         state: [
-          { required: true, message: "请选择用户状态", trigger: "change" }
+          { required: true, message: "请选择分类状态", trigger: "change" }
         ]
-      }
+      },
+      options: [
+        {
+          tid: "",
+          tclassname: ""
+        }
+      ]
     };
   },
   components: {
@@ -91,16 +101,53 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("submit!");
+          this.axios
+            .post(
+              "http://127.0.0.1:888/users/classadd",
+              this.qs.stringify(this.ruleForm)
+            )
+            .then(result => {
+              if (result.data.isOk) {
+                //添加成功
+                this.$message({
+                  message: result.data.msg,
+                  type: "success"
+                });
+                setTimeout(() => {
+                  this.$router.push("/classlist");
+                }, 100);
+              } else {
+                //添加失败
+                this.$message.error(result.data.msg);
+              }
+            })
+            .catch(error => {
+              console.error("服务器错误返回的信息", error);
+            });
         } else {
-          console.log("error submit!!");
+          alert("× 您输入的信息有误!");
           return false;
         }
       });
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    gettclass() {
+      //封装获取商品列表方法
+      this.axios
+        .get("http://127.0.0.1:888/users/gettclass")
+        .then(result => {
+          this.options = result.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
+  },
+  created() {
+    //实例创建后的钩子
+    this.gettclass(); //调用获取顶级分类方法
   }
 };
 </script>

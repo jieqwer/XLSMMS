@@ -40,15 +40,15 @@ export default new Router({
       component: () => import('./views/vipList')
     },
     {
-      path: '/classAdd',
+      path: '/classadd',
       component: () => import('./views/classAdd')
     },
     {
-      path: '/classList',
+      path: '/classlist',
       component: () => import('./views/ClassList')
     },
     {
-      path: '/shopList',
+      path: '/shoplist',
       component: () => import('./views/shopList')
     },
     {

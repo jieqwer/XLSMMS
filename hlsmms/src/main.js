@@ -17,7 +17,7 @@ router.beforeEach((to, from, next) => {
   axios.defaults.withCredentials = true;
   // 发起ajax到后端路由获取cookie，cookie存在就放行，否则去登录页面
   axios.get("http://127.0.0.1:888/users/getCookie").then(result => {
-    console.log("验证的结果", result);
+    // console.log("验证的结果", result);
     //如果登录成或者是访问的页面时登录页面就放行
     if (result.data.isOk || to.path == "/login") {
       next(); //录成功放行

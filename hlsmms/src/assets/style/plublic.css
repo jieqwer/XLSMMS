@@ -333,3 +333,19 @@ body > .el-container {
 .p20{
     padding: 20px;
 }
+#shopinpt .el-dialog{
+    margin-top: 10vh !important;
+}
+#portrait img{
+    width: 30px;
+    height: 30px;
+    border-radius:50%; 
+}
+#portrait{
+    float: right;
+    display: block;
+    width: 30px;
+    height: 30px !important;
+    margin-left: 10px
+}
+

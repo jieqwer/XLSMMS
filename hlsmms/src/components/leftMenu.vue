@@ -10,10 +10,16 @@
       :unique-opened="isOpened"
     >
       <div class="_letfTop">
+        <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+     
+        </el-dialog>
         <p>华联超市管理系统</p>
         <p>
           你好，
           <span>admin</span>
+          <a id="portrait">
+            <img src="../../../hlsmmsserver/upload/1.jpg" @click="dialogVisible = true" alt>
+          </a>
         </p>
         <p>
           <router-link to="/">管理首页</router-link>|
@@ -26,11 +32,11 @@
           <span>分类管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="/classList">
-            <router-link to="/classList">分类管理</router-link>
+          <el-menu-item index="/classlist">
+            <router-link to="/classlist">分类管理</router-link>
           </el-menu-item>
-          <el-menu-item index="/classAdd">
-            <router-link to="/classAdd">添加分类</router-link>
+          <el-menu-item index="/classadd">
+            <router-link to="/classadd">添加分类</router-link>
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
@@ -40,8 +46,8 @@
           <span>商品管理</span>
         </template>
         <el-menu-item-group>
-          <el-menu-item index="/shopList">
-            <router-link to="/shopList">商品管理</router-link>
+          <el-menu-item index="/shoplist">
+            <router-link to="/shoplist">商品管理</router-link>
           </el-menu-item>
           <el-menu-item index="/shopadd">
             <router-link to="/shopadd">添加商品</router-link>
@@ -153,7 +159,11 @@
 export default {
   data() {
     return {
-      isOpened: true
+      isOpened: true,
+      dialogVisible: false,
+      dialogVisible1: false,
+      imageUrl: "",
+      dialogImageUrl: ""
     };
   },
   methods: {
@@ -162,6 +172,13 @@ export default {
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);
+    },
+    handleClose(done) {
+      this.$confirm("确认关闭？")
+        .then(_ => {
+          done();
+        })
+        .catch(_ => {});
     },
     addRow() {},
     loginOut() {
@@ -181,6 +198,12 @@ export default {
         .catch(err => {
           console.log(err);
         });
+    },
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePreview(file) {
+      console.log(file);
     }
   }
 };
