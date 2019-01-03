@@ -158,7 +158,7 @@ export default {
     getusers() {
       //封装获取用户列表方法
       this.axios
-        .get("http://127.0.0.1:888/users/getusers")
+        .get("http://172.16.4.178:888/users/getusers")
         .then(result => {
           // console.log(result.data);
           this.tableData = result.data;
@@ -172,7 +172,7 @@ export default {
         if (valid) {
           this.axios
             .post(
-              "http://127.0.0.1:888/users/updateuser",
+              "http://172.16.4.178:888/users/updateuser",
               this.qs.stringify(this[formName])
             )
             .then(result => {
@@ -201,7 +201,7 @@ export default {
     handleEdit(userid) {
       //数据回显
       this.axios
-        .get("http://127.0.0.1:888/users/getuserbyid?id=" + userid)
+        .get("http://172.16.4.178:888/users/getuserbyid?id=" + userid)
         .then(oldresult => {
           let oldresults = oldresult.data[0];
           console.log(oldresult);
@@ -222,7 +222,7 @@ export default {
       })
         .then(() => {
           this.axios
-            .get("http://127.0.0.1:888/users/delusers?id=" + userid)
+            .get("http://172.16.4.178:888/users/delusers?id=" + userid)
             .then(result => {
               let results = result.data;
               if (results.isOk) {

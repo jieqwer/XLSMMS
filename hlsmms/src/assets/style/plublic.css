@@ -349,3 +349,24 @@ body > .el-container {
     margin-left: 10px
 }
 
+.el-pager li {
+    background: #fafafa;
+    margin: 0 10px;
+    transition: all .4s ease-in-out
+}
+.el-pager li.active {
+    color: #fff;
+    cursor: default;
+    background: teal;
+    
+}
+.el-pager li:hover {
+    color: #fff;
+    cursor: default;
+    background: teal;
+}
+
+
+#loginbox .el-card__header {
+    background: rgba(255,255,255,0.4) !important;
+}

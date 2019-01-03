@@ -136,7 +136,7 @@ export default {
     handleEdit(cid) {
       //数据回显
       this.axios
-        .get("http://127.0.0.1:888/users/getclassbyid?id=" + cid)
+        .get("http://172.16.4.178:888/users/getclassbyid?id=" + cid)
         .then(oldresult => {
           let oldresults = oldresult.data[0];
           console.log(oldresult);
@@ -158,7 +158,7 @@ export default {
       })
         .then(() => {
           this.axios
-            .get("http://127.0.0.1:888/users/delclasss?id=" + cid)
+            .get("http://172.16.4.178:888/users/delclasss?id=" + cid)
             .then(result => {
               let results = result.data;
               if (results.isOk) {
@@ -185,7 +185,7 @@ export default {
     getclasslist() {
       //封装获取商品列表方法
       this.axios
-        .get("http://127.0.0.1:888/users/getclasslist")
+        .get("http://172.16.4.178:888/users/getclasslist")
         .then(result => {
           this.tableData = result.data;
         })
@@ -196,7 +196,7 @@ export default {
     gettclass() {
       //封装获取商品列表方法 排除禁用
       this.axios
-        .get("http://127.0.0.1:888/users/gettclass")
+        .get("http://172.16.4.178:888/users/gettclass")
         .then(result => {
           this.options = result.data;
         })
@@ -209,7 +209,7 @@ export default {
         if (valid) {
           this.axios
             .post(
-              "http://127.0.0.1:888/users/updateclass",
+              "http://172.16.4.178:888/users/updateclass",
               this.qs.stringify(this[formName])
             )
             .then(result => {

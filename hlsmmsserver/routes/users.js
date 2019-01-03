@@ -1,25 +1,13 @@
 var express = require('express');
 var router = express.Router();
+const multer=require("multer");
+const fs=require("fs");
 const mysql = require('mysql');
-const conn = mysql.createConnection({
-    host: 'localhost', //数据库主机名
-    user: 'root',         //数据库账号
-    password: '123456',    //密码
-    database: 'hlsmms'         //使用哪个数据库
-});
 
-//打开数据库链接
-conn.connect((err) => {
-    if (err) {
-        console.log("× 数据库链接失败！", err.message);
-    }
-    else {
-        console.log("√ 数据库链接成功！");
-    }
-});
+var conn=require("./conn");//引入链接数据库组件
 //设置响应头
 router.all("*", function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+    res.header("Access-Control-Allow-Origin", "http://172.16.4.178:8080");
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
@@ -185,11 +173,12 @@ router.get("/getCookie", (req, res) => {
     let userid = req.cookies.userid;
     let username = req.cookies.username;
     if (userid && username) {
-        res.send({ "isOk": true, "code": 1 })
+        res.send({ "isOk": true, "code": 1 ,"username":username})
     } else {
         res.send({ "isOk": false, "code": 0 })
     }
 })
+
 //清除cookie
 router.get("/loginOut", (req, res) => {
     res.clearCookie("userid");
@@ -502,7 +491,15 @@ router.post("/updateclass", (req, res) => {
     })
 })
 
+  /* GET home page. */
+  router.get('/', function (req, res, next) {
+    res.render('index', {});
+  });
+  
+  router.post("/upload",  (req, res) => {
 
-
+    res.send("1");
+  
+  })
 
 module.exports = router;

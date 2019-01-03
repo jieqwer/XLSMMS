@@ -3,7 +3,7 @@
     <!-- 卡片组件： 登录的外框 -->
     <el-card class="box-card" id="login">
       <div slot="header" class="clearfix">
-        <h2 class>用户登录</h2>
+        <marquee scrollamount="10" style="width: 400px;height: 40px;line-height:40px;font-size:16px;color:#3ed">欢迎光临华联超市后台管理登录系统</marquee>
       </div>
       <div class="text item">
         <!-- 表单组件：登录的表单 -->
@@ -28,10 +28,15 @@
         </el-form>
       </div>
     </el-card>
+    
   </div>
+
+
 </template>
 
 <script>
+
+
 // 暴露一个模块： 登录组件
 export default {
   data() {
@@ -74,7 +79,7 @@ export default {
           this.axios.defaults.withCredentials = true;
           this.axios
             .post(
-              "http://127.0.0.1:888/users/login",
+              "http://172.16.4.178:888/users/login",
               this.qs.stringify(this[formName])
             )
             .then(result => {

@@ -70,7 +70,7 @@
                 </el-table-column>
                 <el-table-column label="促销价（元）">
                   <template slot-scope="scope">
-                    <span>{{ scope.row.sellprice*0.9}}</span>
+                    <span>{{ scope.row.sellprice*0.9| two}}</span>
                   </template>
                 </el-table-column>
                 <el-table-column label="市场价（元）">
@@ -275,7 +275,7 @@ export default {
       },
       input10: "",
       currentPage: 1, //当前在那页，默认值
-      pageSize: 6, //每页大小，默认值
+      pageSize: 3, //每页大小，默认值
       total: 0 //总记录数量
     };
   },
@@ -296,7 +296,7 @@ export default {
     handleEdit(pid) {
       //数据回显
       this.axios
-        .get("http://127.0.0.1:888/users/getshopbyid?id=" + pid)
+        .get("http://172.16.4.178:888/users/getshopbyid?id=" + pid)
         .then(oldresult => {
           let oldresults = oldresult.data[0];
           console.log(oldresult);
@@ -316,7 +316,7 @@ export default {
       })
         .then(() => {
           this.axios
-            .get("http://127.0.0.1:888/users/delshops?id=" + pid)
+            .get("http://172.16.4.178:888/users/delshops?id=" + pid)
             .then(result => {
               let results = result.data;
               if (results.isOk) {
@@ -345,7 +345,7 @@ export default {
         if (valid) {
           this.axios
             .post(
-              "http://127.0.0.1:888/users/updateshop",
+              "http://172.16.4.178:888/users/updateshop",
               this.qs.stringify(this[formName])
             )
             .then(result => {
@@ -390,7 +390,7 @@ export default {
       this.axios
         .get(
           //传入分页参数: pageSize每页大小，当前在第几页currentPage
-          `http://127.0.0.1:888/users/getshops?classname=${
+          `http://172.16.4.178:888/users/getshops?classname=${
             this.value
           }&keywords=${this.formSearch.keywords}&pagesize=${
             this.pageSize
@@ -411,7 +411,7 @@ export default {
     getclass() {
       //封装获取商品列表方法
       this.axios
-        .get("http://127.0.0.1:888/users/getclass")
+        .get("http://172.16.4.178:888/users/getclass")
         .then(result => {
           this.formSearch.classname = result.data;
           console.log(result.data);
@@ -450,6 +450,9 @@ export default {
   filters: {
     pricec(val) {
       return val * 0.9;
+    },
+    two(val) {
+      return val.toFixed(2)
     }
   }
 };

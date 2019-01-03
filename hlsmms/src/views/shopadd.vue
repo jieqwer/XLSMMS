@@ -47,7 +47,7 @@
                   <el-input
                     type="text"
                     v-model="ruleForm.inprice"
-                    @blur="updatePrice()"
+                    @change="updatePrice()"
                     autocomplete="off"
                   ></el-input>元
                 </el-form-item>
@@ -132,7 +132,7 @@ export default {
         bazaarprice: [
           { required: true, trigger: "blur", message: "市场价必填" }
         ],
-        inprice: [{ required: true, trigger: "blur", message: "商品进价必填" }],
+        inprice: [{ required: true, trigger: "change", message: "商品进价必填" }],
         inventory: [
           { required: true, trigger: "blur", message: "入库数量必填" }
         ],
@@ -163,7 +163,7 @@ export default {
         if (valid) {
           this.axios
             .post(
-              "http://127.0.0.1:888/users/shopadd",
+              "http://172.16.4.178:888/users/shopadd",
               this.qs.stringify(this.ruleForm)
             )
             .then(result => {
@@ -220,7 +220,7 @@ export default {
     getclass() {
       //封装获取商品列表方法
       this.axios
-        .get("http://127.0.0.1:888/users/getclass")
+        .get("http://172.16.4.178:888/users/getclass")
         .then(result => {
           this.options = result.data;
         })

@@ -103,7 +103,7 @@ export default {
         if (valid) {
           this.axios
             .post(
-              "http://127.0.0.1:888/users/classadd",
+              "http://172.16.4.178:888/users/classadd",
               this.qs.stringify(this.ruleForm)
             )
             .then(result => {
@@ -136,7 +136,7 @@ export default {
     gettclass() {
       //封装获取商品列表方法
       this.axios
-        .get("http://127.0.0.1:888/users/gettclass")
+        .get("http://172.16.4.178:888/users/gettclass")
         .then(result => {
           this.options = result.data;
         })

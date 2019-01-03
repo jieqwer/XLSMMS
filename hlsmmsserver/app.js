@@ -38,6 +38,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 app.listen(888,()=>{
-  console.log("服务器连接成功，地址是：http://127.0.0.1:888")
+  console.log("服务器连接成功，地址是：http://172.16.4.178:888")
 });
 module.exports = app;

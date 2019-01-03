@@ -113,7 +113,7 @@ export default {
         if (valid) {
           this.axios
             .post(
-              "http://127.0.0.1:888/users/updatepwd",
+              "http://172.16.4.178:888/users/updatepwd",
               this.qs.stringify(this[formName])
             )
             .then(result => {
